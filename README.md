@@ -18,6 +18,15 @@ flowchart LR
     D -- Yes --> E["Claude writes one<br/>personalisation line"]
     E --> F["Log in Attio<br/>signal type and date first"]
     F --> G["Instantly sequence<br/>by signal tier"]
+    G --> H{"Reply?"}
+    H -- No --> I["Follow-up by tier<br/>re-check signal first<br/>5 touches max"]
+    I --> G
+    H -- Yes --> J["Claude classifies<br/>7 labels, JSON out"]
+    J --> K{"Confidence<br/>0.7 or more?"}
+    K -- No --> L["Manual review"]
+    K -- Yes --> M["Act on the label<br/>a person approves<br/>positive and referral replies"]
+    M --> N["Meeting booked<br/>or suppress, snooze, refer"]
+    N --> O["Weekly review by<br/>signal type and tier"]
 ```
 
 Every step has a stop rule. That is the point. A lead that fails a check does not move forward.
@@ -31,6 +40,7 @@ Every step has a stop rule. That is the point. A lead that fails a check does no
 - **Clay workflow**: a 5-step enrichment and sequencing logic.
 - **Claude personalisation prompt**: paste it into a Clay Claude column.
 - **Hard rules**: what never to do.
+- **Reply handling, follow-up, deliverability and measurement**: the part after the send.
 
 ---
 
@@ -58,6 +68,21 @@ This is a made-up lead. It shows the logic. See [`examples/`](examples/) for a f
 5. **Sequence.** Tier 1, so 3 emails and 2 LinkedIn touches.
 
 A lead with no signal detail stops at step 2. A lead outside the ARR range is dropped at step 1. Both cases are in the sample data.
+
+---
+
+## After the send: replies, follow-up and measurement
+
+Most outbound workflows stop at "send". This one covers the rest. The full detail is in [`SKILL.md`](SKILL.md) sections 7 to 12.
+
+- **Reply handling.** Each reply gets one of seven labels (`positive`, `not_now`, `referral`, `not_interested`, `unsubscribe`, `auto_reply`, `unclear`) from a JSON-only Claude prompt. Auto-reply headers are checked before anything else, so an out-of-office footer is never read as an opt-out. Below 0.7 confidence, a person decides.
+- **One action per label.** Positive replies stop the sequence and get a drafted reply with a booking link. Referrals become new contacts. Unsubscribes are suppressed within the hour.
+- **A person approves** every reply to a positive or a referral. Only the unsubscribe confirmation sends on its own.
+- **Follow-up by tier.** Fixed day offsets, 5 touches at most across email and LinkedIn, a new angle each time, and a signal re-check before the first touch and again before touch 3.
+- **Sending safeguards.** Secondary domains, SPF, DKIM and DMARC, warm-up, volume caps, and pause rules for bounces and spam complaints. All figures are starting defaults.
+- **Measurement.** Defined formulas, cut by signal type, tier and touch number. No segment is judged before 100 delivered sends.
+
+Samples for all of it are in [`examples/`](examples/).
 
 ---
 

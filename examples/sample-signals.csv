@@ -1,0 +1,8 @@
+company,buyer_first_name,buyer_title,signal_type,signal_detail,signal_date,arr_range_estimated,headcount
+Northwind Metrics,Dana,Founder and CEO,Hiring,Opened a Head of Marketing role. Founder still owns pipeline.,2026-10-27,$1M-$3M,22
+Brightpath Labs,Sam,Co-founder,Funding,Announced a Series A.,2026-10-14,$3M-$6M,35
+Harbor Ledger,Priya,CEO,Hiring,Three GTM roles open at once: SDR AE and Growth Lead.,2026-10-30,$4M-$8M,48
+Kestrel Ops,Marcus,Founder,LinkedIn activity,Posted about outbound that is not landing.,2026-10-29,$1M-$2M,14
+Oakline Systems,Lena,COO,Tech stack,HubSpot in the stack. No outbound tooling found.,2026-10-20,$2M-$5M,30
+Redfern Cloud,Tom,VP Sales,Funding,Announced a Series B.,2026-10-18,$25M-$40M,260
+Fieldstone AI,Aisha,Founder,Hiring,,2026-10-26,$1M-$3M,18

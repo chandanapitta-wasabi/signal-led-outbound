@@ -1,9 +1,9 @@
 tier,touch,day,channel,angle
 1,1,0,Email,"Signal, problem, one proof, one ask"
-1,2,1,LinkedIn,"Connection request, no pitch"
-1,3,4,Email,New angle: how a similar company handled it
-1,4,7,LinkedIn,One short question about the problem
-1,5,11,Email,Permission-based close
+1,2,3,LinkedIn,"Connection request, no pitch"
+1,3,6,Email,New angle: how a similar company handled it
+1,4,9,LinkedIn,One short question about the problem
+1,5,13,Email,Permission-based close
 2,1,0,Email,"Signal, problem, one proof, one ask"
 2,2,4,Email,New angle
 2,3,9,Email,Permission-based close

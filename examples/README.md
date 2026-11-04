@@ -4,14 +4,15 @@ Everything in this folder is made-up sample data. The companies and people are f
 
 ## Before the send
 
-- `sample-signals.csv`: seven leads as they would arrive from a signal source.
+- `sample-signals.csv`: seven leads as they would arrive from a signal source, each with its source and a link to the evidence. The links are fictional.
 - `sample-output.csv`: what the workflow does with each one.
 
 What to look at:
 
 - Five leads pass every check and get a tier, a one-line personalisation and a sequence.
 - Redfern Cloud is dropped at the ICP check, because its estimated ARR is above the $10M ceiling.
-- Fieldstone AI stops at enrichment, because it has no signal detail. No signal means no sequence.
+- Fieldstone AI stops at enrichment, because it has no signal detail or source. No signal means no sequence.
+- Northwind Metrics has two signals that tell one story: a Head of Marketing role and a founder post saying they still run sales.
 
 ## After the send
 

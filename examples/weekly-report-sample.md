@@ -52,6 +52,6 @@ Not calculated. This sample run has 8 sends, and the rule is that no segment is 
 
 ## Decisions this report would drive
 
-- Cut rule: under 0.5% positive reply rate after 200 delivered sends, drop a tier or pause the signal type.
+- Cut rule: under 0.5% positive reply rate after 200 delivered sends, check signal quality, ICP fit, contact data, delivery and the message first. Then fix it, drop a tier or pause the signal type.
 - Scale rule: well above baseline after 100 or more sends, add volume.
 - Manual review: relabel anything in the queue and add it to the classifier test set.

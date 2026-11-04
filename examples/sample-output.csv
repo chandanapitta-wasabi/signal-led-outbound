@@ -1,8 +1,8 @@
-company,buyer_first_name,status,tier,personalisation_line,sequence,crm_stage
-Northwind Metrics,Dana,Sequenced,1,Opening a Head of Marketing role while you still own pipeline yourself is a particular kind of pressure.,3 emails + 2 LinkedIn touches,Outbound - Active
-Brightpath Labs,Sam,Sequenced,1,A fresh Series A usually comes with pipeline targets that founder-led sales rarely hits alone.,3 emails + 2 LinkedIn touches,Outbound - Active
-Harbor Ledger,Priya,Sequenced,2,Three GTM roles open at once usually means pipeline is behind plan and hiring alone won't fix it fast.,3 emails,Outbound - Active
-Kestrel Ops,Marcus,Sequenced,2,Writing publicly about outbound that isn't landing usually means the targeting and not the copy is the problem.,3 emails,Outbound - Active
-Oakline Systems,Lena,Sequenced,3,A CRM full of contacts and no outbound tooling usually means pipeline depends on referrals and inbound alone.,2 emails,Outbound - Active
-Redfern Cloud,Tom,Dropped,,,,Not added. Estimated ARR is above the $10M ceiling.
-Fieldstone AI,Aisha,Stopped,,,,Not added. No signal detail. No signal means no sequence.
+company,buyer_first_name,status,tier,evidence_used,confidence,personalisation_line,sequence,crm_stage
+Northwind Metrics,Dana,Sequenced,1,Head of Marketing job post (2026-10-27) and founder post saying they still run sales,Medium,Opening a Head of Marketing role while still handling sales yourself suggests you're building out the commercial function.,3 emails + 2 LinkedIn touches,Outbound - Active
+Brightpath Labs,Sam,Sequenced,1,Series A press release (2026-10-14),Low,Your Series A announcement on 14 October marks a new stage for the company.,3 emails + 2 LinkedIn touches,Outbound - Active
+Harbor Ledger,Priya,Sequenced,2,"Careers page listing SDR, AE and Growth Lead roles (2026-10-30)",Medium,"You're hiring across SDR, sales and growth roles at once, which suggests a broader expansion of the GTM function.",3 emails,Outbound - Active
+Kestrel Ops,Marcus,Sequenced,2,Founder LinkedIn post about outbound not landing (2026-10-29),High,You recently mentioned that your outbound isn't landing as expected.,3 emails,Outbound - Active
+Oakline Systems,Lena,Sequenced,3,BuiltWith record showing HubSpot and no outbound tool (2026-10-20),Low,"HubSpot is in your stack, though I couldn't see what you use for outbound.",2 emails,Outbound - Active
+Redfern Cloud,Tom,Dropped,,,,,,Not added. Estimated ARR is above the $10M ceiling.
+Fieldstone AI,Aisha,Stopped,,,,,,Not added. No signal detail. No signal means no sequence.

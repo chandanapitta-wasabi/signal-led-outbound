@@ -9,7 +9,7 @@ Everything in this folder is made-up sample data. The companies and people are f
 
 What to look at:
 
-- Five leads pass every check and get a tier, a one-line personalisation and a sequence.
+- Five leads pass every check and get a tier, a one-line personalisation and a sequence. Each line comes with the evidence it uses and a confidence rating, and says nothing the evidence does not support.
 - Redfern Cloud is dropped at the ICP check, because its estimated ARR is above the $10M ceiling.
 - Fieldstone AI stops at enrichment, because it has no signal detail or source. No signal means no sequence.
 - Northwind Metrics has two signals that tell one story: a Head of Marketing role and a founder post saying they still run sales.
@@ -20,7 +20,7 @@ What to look at:
 - `followup-templates.md`: skeletons for the first email, the new-angle follow-up, the close and the LinkedIn touches.
 - `sample-replies.csv`: seven fictional replies with the full email text, the label Claude would return, the extracted fields and the action taken.
 - `reply-templates.md`: drafted responses for each label.
-- `weekly-report-sample.md`: the weekly report built from the sample run. Rates are left uncalculated on purpose, because 8 sends is below the 100-send minimum.
+- `weekly-report-sample.md`: the weekly report built from the sample run. Rates are calculated as observed results only, because 8 delivered emails is far below the 100-send review threshold.
 
 What to look at in `sample-replies.csv`:
 

@@ -8,7 +8,7 @@ Fictional skeletons. Every proof point you add must be a real result you can doc
 >
 > [Personalisation line from Claude, one sentence.]
 >
-> [One sentence on the problem that signal usually points to.]
+> [One sentence connecting the signal to a relevant business problem, only where supported by the available evidence.]
 >
 > [One proof point.]
 >
@@ -40,4 +40,4 @@ Connection request, no pitch:
 
 One short question, sent after they accept:
 
-> [One question about the problem, for example: "How are you handling outbound while the Head of Marketing role is open?"]
+> [One neutral question that assumes nothing about how they work today, for example: "What prompted the search for a Head of Marketing at this stage?"]

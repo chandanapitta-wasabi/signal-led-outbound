@@ -35,14 +35,19 @@ This report is built from the fictional sample run. Every number below is sample
 
 ## Rates
 
-Not calculated. This sample run has 8 sends, and the rule is that no segment is judged before 100 delivered sends. At that size a rate would be noise. The template for the real run:
+Rates are calculated for reporting purposes, but samples below the review threshold should not be treated as evidence of segment performance. This sample run has 8 delivered emails, well under the 100-send review threshold.
 
-| Metric | Formula | Value |
-|---|---|---|
-| Delivered rate | (sent minus bounced) / sent | n/a below 100 |
-| Reply rate | replies excluding auto_reply / delivered | n/a below 100 |
-| Positive reply rate | positive / delivered | n/a below 100 |
-| Meetings per 100 delivered | meetings booked / delivered x 100 | n/a below 100 |
+| Metric | Formula | Observed result | Interpretation |
+|---|---|---|---|
+| Delivered emails | sent minus bounced | 8 | Very small sample |
+| Delivered rate | (sent minus bounced) / sent | 100% | Descriptive only |
+| Reply rate | replies excluding auto_reply / delivered | 75% (6 of 8) | Descriptive only |
+| Positive replies | count of `positive` | 1 | Observed result |
+| Positive response rate | positive / delivered | 12.5% (1 of 8) | Descriptive only |
+| Meetings requested | count | 1 | Requires further validation |
+| Qualified opportunities | count | 0 | No qualified opportunities yet |
+
+Every figure here comes from the fictional sample data.
 
 ## Segments to review once the sample is large enough
 
@@ -53,5 +58,5 @@ Not calculated. This sample run has 8 sends, and the rule is that no segment is 
 ## Decisions this report would drive
 
 - Cut rule: under 0.5% positive reply rate after 200 delivered sends, check signal quality, ICP fit, contact data, delivery and the message first. Then fix it, drop a tier or pause the signal type.
-- Scale rule: well above baseline after 100 or more sends, add volume.
+- Scale rule: segments showing consistently stronger performance across sufficiently sized, comparable cohorts can receive more volume. Check signal quality, ICP fit, delivery performance and qualified-opportunity conversion first.
 - Manual review: relabel anything in the queue and add it to the classifier test set.

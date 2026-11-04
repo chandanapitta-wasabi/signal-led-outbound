@@ -24,9 +24,11 @@ To the person they named:
 
 > Hi [Referral name],
 >
-> [Name] at [Company] suggested I contact you about [problem]. [One line on the signal, for example: "You are hiring a Head of Marketing while pipeline still sits with the founders."] [One proof point that can be documented].
+> [Name] at [Company] suggested I contact you about [problem]. [One line on the signal, for example: "You are hiring a Head of Marketing."] [One proof point that can be documented].
 >
 > Open to a short call?
+
+Only include a problem statement or business circumstance when it is supported by the referred contact's company record. Do not transfer assumptions from the original contact to the referral.
 
 ## Not interested
 

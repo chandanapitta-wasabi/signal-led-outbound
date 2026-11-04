@@ -41,11 +41,13 @@ Never fill a missing ARR with a guess.
 
 A signal is something you can see: a job post, a raise, a LinkedIn post, a tool in the stack. What it means for the buyer is a guess until you check it. Each line below says what the signal suggests, not what it proves.
 
-**Tier 1, act immediately**
-- Hiring for Head of Marketing, VP Marketing, Growth Lead, or an SDR/BDR role. Suggests they are scaling GTM before the capability is in house.
-- Series A or B announced in the last 90 days. Suggests growth targets and money to spend. It does not prove there is budget for what you sell.
+Tier assignment determines how quickly an account should be researched. It does not independently determine whether the account is ready to enter a sequence. Signal relevance, evidence quality and ICP fit must still be assessed.
 
-**Tier 2, act within the week**
+**Tier 1, research immediately**
+- Hiring for Head of Marketing, VP Marketing, Growth Lead, or an SDR/BDR role. Suggests they are scaling GTM before the capability is in house.
+- Series A or B announced in the last 90 days. Suggests growth plans and more resources. It does not establish available budget for what you sell.
+
+**Tier 2, research within the week**
 - 3+ GTM roles posted at once. Suggests a push on growth.
 - Founder or CMO posting on LinkedIn about pipeline, outbound or AI growth. Suggests the problem is on their mind. Use what they said, not what you think they meant.
 
@@ -54,6 +56,16 @@ A signal is something you can see: a job post, a raise, a LinkedIn post, a tool 
 - A job description names Clay, Apollo or Instantly but no one owns them yet. Suggests they know the gap exists.
 
 **Signals that stack.** Two or three signals that point to the same need make a stronger case than one. A Series A, three GTM roles and a founder post about pipeline tell one story. A stack is still not proof of budget, and signals that point to different needs do not stack.
+
+**Priority is not confidence.** A signal can deserve fast research and still say little about buying intent. Illustrative assessments, not universal scores:
+
+| Signal | Research priority | Buying-intent confidence |
+|---|---|---|
+| Recent Series A | High | Low to medium |
+| Head of Marketing vacancy | High | Medium |
+| Founder explicitly discussing pipeline problems | High | High |
+| Series A, relevant hiring and a pipeline problem together | Very high | Higher |
+| HubSpot detected, no outbound tool found | Low | Low |
 
 **Record the evidence.** Log every signal with its source, a link, the date it was published and the date it was last checked. A signal you cannot link to does not go into a sequence.
 
@@ -79,15 +91,19 @@ Required fields before any message is generated: company name, ARR range (estima
 Generate one personalisation line per lead from the signal. Rules:
 - Not a compliment
 - Not a LinkedIn summary
-- A specific observation that connects the signal to the problem this product solves
+- A specific observation that connects the signal to a relevant problem, only where the evidence supports it
 - Only facts from the lead's record. A guess about their situation is never written as fact.
+- No pressure, urgency or pain unless the record shows it
 - Max 1 sentence
 - Written as if the sender already knows the context
+- Returned with the observation, evidence, possible implication and confidence behind it (section 5), so a person can check it
 
 Bad: "I love what you're building."
-Good: "Posting a Growth Lead role while still owning pipeline yourself is a specific kind of pressure."
+Good: "Hiring a Growth Lead while still handling sales yourself suggests you're building out the commercial function."
 
-The good line only works when the record shows the founder still owns pipeline, for example from their own post. Without that fact, write about the role, not the founder.
+The good line only works when the record shows the founder still handles sales, for example from their own post. Without that fact, write about the role, not the founder.
+
+A person reviews every line against its evidence before CRM entry. A line the evidence does not support is rewritten or the lead goes back for a better signal.
 
 **Step 4. CRM entry**
 Log: contact, company, signal type, signal detail, signal source link, signal date, sequence assigned. Status: Outbound, Active. Check the suppression list and any active contacts at the same company first. Never push to CRM without the signal type logged.
@@ -102,7 +118,7 @@ Instantly sends the emails. The LinkedIn touches are separate tasks, sent by han
 
 ---
 
-## 5. Personalisation prompt, paste into Claude
+## 5. Personalisation prompt, paste into Claude or any AI column
 
 ```
 You are writing one personalisation line for a cold outbound email or LinkedIn message.
@@ -116,16 +132,34 @@ Product: [one-line description of what's being sold]
 Rules:
 - One sentence, max 20 words
 - Open with the observation, not "I noticed" or "I saw"
-- Connect the signal to the problem it usually points to
+- Connect the signal to a relevant business problem only where the evidence above supports it
 - Use only the facts above. Do not invent numbers, plans or problems
 - Never state a guess about their situation as fact
+- Do not imply pressure, urgency or pain unless the evidence shows it
 - Do not name the product
 - Do not compliment them
 - British English
 - If the signal is too thin to write a true line, return INSUFFICIENT SIGNAL
+
+Return:
+Observation: [the verified fact, with its date]
+Evidence: [the source it came from]
+Possible implication: [what it may mean, written as a possibility]
+Confidence: [low, medium or high]
+Line: [the personalisation line, or INSUFFICIENT SIGNAL]
 ```
 
-A lead that returns INSUFFICIENT SIGNAL goes to a person, who finds a better signal or drops the lead.
+Example output:
+
+| Output | Example |
+|---|---|
+| Observation | Head of Marketing role published on 27 October |
+| Evidence | The original job post |
+| Possible implication | The company may be building out marketing leadership |
+| Confidence | Medium |
+| Line | "Your Head of Marketing search suggests you're investing in building out the marketing function." |
+
+The model does not just write copy. It shows the evidence behind it, which makes the human review fast. A lead that returns INSUFFICIENT SIGNAL goes to a person, who finds a better signal or drops the lead.
 
 ---
 
@@ -211,6 +245,8 @@ Use the cheapest model that holds accuracy on your own labelled replies. Classif
 | `auto_reply` | No change | Pause until `return_date` plus 1 business day, or resume the next step | Not counted as a reply | None |
 | `unclear` | Review | Pause | A person reads it and relabels it | 1 business day |
 
+**After a 12-month `not_interested` suppression,** contact is not resumed automatically. It needs a fresh qualification decision, a new valid signal, valid contact details and no new suppression instruction. An unsubscribe is permanent.
+
 **Bounces** are not a label. Mark the address invalid, stop email steps for that contact and never retry the same address. Keep the contact and company open, so you can find a correct address or switch to LinkedIn. A bounce does not pause anyone else at the company.
 
 ### 7.4 The approval gate
@@ -263,10 +299,10 @@ A signal decays, and not at the same speed. A job post can close in two weeks, w
 
 All figures here are starting defaults. Adjust them against your own inbox placement tests.
 
-- **Domains:** send from secondary domains, not the primary company domain. Two or three mailboxes per domain. This lowers the risk to your main domain. It does not guarantee inbox placement.
+- **Domains:** consider separate sending domains for outbound where appropriate. Configure them with proper authentication and maintain clear brand identity. This is an infrastructure choice, not a guarantee of deliverability. If you use them, two or three mailboxes per domain is a common starting point.
 - **Authentication:** SPF, DKIM and DMARC on every sending domain. Use a custom tracking domain.
 - **Warm-up:** warm each mailbox before sending cold email. Start at 20 or fewer new-contact emails per mailbox per day and ramp over several weeks. Cap steady-state sending at 30 to 40 a day per mailbox. Your email provider's own limits come first.
-- **Content:** plain text, no images, one link at most. Turn open tracking off, because tracking pixels can hurt placement.
+- **Content:** plain text, no images, one link at most. Consider disabling open tracking where it isn't needed. Tracking pixels can introduce privacy and deliverability trade-offs, and open data is often unreliable.
 - **Verification:** verify every address before it enters a sequence. Aim for a bounce rate under 2%.
 - **Circuit breakers:** pause a mailbox if its bounce rate passes 3% or spam complaints pass 0.1%. These are internal defaults, not provider rules.
 - **Placement testing:** send to seed addresses on Gmail and Outlook before launching a campaign. Check inbox, promotions and spam placement. Test each recipient's mail provider (Google, Microsoft or a security gateway) because gateways such as Proofpoint, Mimecast and Barracuda can quarantine mail while your sending tool still reports it as delivered. For gateway-protected contacts, decide by hand whether LinkedIn or phone is the better channel.
@@ -301,10 +337,10 @@ Cut every metric by signal type, tier, touch number (which touch got the reply),
 
 - **Weekly:** pipeline counts, bounce and complaint rates, reply labels, the manual review queue.
 - **Monthly:** scale, hold or cut each segment.
-- **Minimum sample:** do not judge a segment until it has at least 100 delivered sends. Below that, reply rates are noise. 100 is the first review point, not proof. Results above it are still directional.
+- **Review threshold:** use 100 delivered emails as an initial review threshold for a segment. Smaller samples can still be reported descriptively, but results should be treated as highly uncertain. Crossing 100 does not establish statistical significance or prove that a segment is validated.
 - **Cut rule:** a signal type with under 0.5% positive reply rate after 200 delivered sends gets checked first: signal quality, ICP fit, contact data, delivery and the message. Then fix it, drop it a tier or pause it.
-- **Scale rule:** a segment well above your baseline after 100 or more sends gets more volume.
-- **One variable at a time:** test the angle, the subject or the ask separately, with at least 100 per arm.
+- **Scale rule:** segments showing consistently stronger performance across sufficiently sized, comparable cohorts can receive additional volume. Before scaling, examine signal quality, ICP fit, delivery performance and qualified-opportunity conversion.
+- **One variable at a time:** test the angle, the subject or the ask separately. Use 100 delivered sends per arm as an initial directional review point where practical. Determine the sample required for a reliable comparison based on the baseline rate and the minimum improvement worth detecting. Do not declare a winner based solely on a small difference in observed rates.
 
 ### 10.4 Attribution
 
@@ -339,7 +375,7 @@ Because `signal_type`, `signal_date` and `tier` are written at CRM entry (sectio
 - **Auto-replies counted as replies.** This inflates the reply rate and hides the real number. Filter on headers first.
 - **"Unsubscribe" in a footer.** An out-of-office footer is not an opt-out. Header check comes before keyword matching.
 - **Two contacts at one company.** Without the company-level pause, two people receive different follow-ups on the same day.
-- **Judging too early.** A reply rate on 30 sends tells you nothing. Wait for the minimum sample.
+- **Judging too early.** A reply rate on 30 sends is an observed result, not a conclusion. Report it, but do not scale or cut on it.
 - **A signal read as intent.** A raise or a job post is a fact. That they need what you sell is a guess. Check it before writing as if it is true.
 - **Invented personalisation.** The line names a problem the record does not support. This is why the prompt can return INSUFFICIENT SIGNAL.
 - **The wrong person.** The contact runs the work but does not own the decision. Check who signs off.
